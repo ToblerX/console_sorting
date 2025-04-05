@@ -1,7 +1,6 @@
 from algorithm import Algo
 from typing import List, Tuple, Union
 from tools import timeit
-import time
 
 class BubbleSort(Algo):
     def __init__(self, arr: List[int], count_time: bool) -> None:

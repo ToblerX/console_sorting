@@ -1,6 +1,6 @@
-import time
-from typing import Callable, Tuple, List, Optional
+from typing import Callable, List, Tuple, Optional
 from functools import wraps
+import time
 
 def timeit(method: Callable) -> Callable:
     @wraps(method)

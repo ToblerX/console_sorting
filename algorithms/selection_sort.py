@@ -1,18 +1,18 @@
 from algorithm import Algo
 from typing import List, Tuple, Union
-import time
+from tools import timeit
 
 class SelectionSort(Algo):
-    def __init__(self, arr, count_time):
+    def __init__(self, arr: List[int], count_time: bool) -> None:
         super().__init__(arr, count_time)
 
-    def run(self, arr: list, count_time: bool) -> Union[List[int], Tuple[List[int], float]]:
-        if count_time:
-            start = time.time()
-
-        #xxx
-
-        if count_time:
-            end = time.time()
-            return arr, end - start
+    @timeit
+    def run(self, arr: List[int], count_time: bool) -> List[int]:
+        n = len(arr)
+        for i in range(n):
+            minid =  i
+            for j in range(i, n):
+                if arr[j] < arr[minid]:
+                    minid = j
+            arr[i], arr[minid] = arr[minid], arr[i]
         return arr
