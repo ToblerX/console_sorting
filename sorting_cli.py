@@ -12,7 +12,6 @@ from algorithms.bucket_sort import BucketSort
 from algorithms.heap_sort import HeapSort
 
 
-
 def get_sorting_time(arr, algorithm_name):
     sorter = None
     if algorithm_name == "QuickSort":
@@ -38,7 +37,6 @@ def get_sorting_time(arr, algorithm_name):
 
     sorted_arr, time_taken = sorter.run(arr, count_time=True)
     return time_taken
-
 
 
 def compare_algorithms(arr, algo1, algo2):
@@ -172,7 +170,6 @@ HeapSort:
     return info.get(algorithm_name, "Unknown algorithm")
 
 
-
 def generate_array(size, array_type="reversed"):
     if array_type == "random":
         return random.sample(range(size * 10), size)
@@ -184,11 +181,9 @@ def generate_array(size, array_type="reversed"):
 
 def main():
     parser = argparse.ArgumentParser(description="Sorting Algorithms CLI")
-    parser.add_argument("-a", "--algorithm", type=str, required=True,
-                        help="Algorithm name (e.g., QuickSort, BubbleSort, etc.)")
+    parser.add_argument("-a", "--algorithm", type=str, help="Algorithm name (e.g., QuickSort, BubbleSort, etc.)")
     parser.add_argument("-s", "--size", type=int, help="Size of the array to sort")
-    parser.add_argument("-c", "--compare", type=str, nargs=2,
-                        help="Compare two algorithms (e.g., QuickSort BubbleSort)")
+    parser.add_argument("-c", "--compare", type=str, nargs=2, help="Compare two algorithms (e.g., QuickSort BubbleSort)")
     parser.add_argument('-p', '--post', action='store_true', help="Post information about the selected algorithm")
     parser.add_argument('-d', '--data', type=str, choices=["random", "reversed"], default="reversed",
                         help="Choose the array type: 'random' or 'reversed' (default: 'reversed')")
@@ -196,8 +191,12 @@ def main():
     args = parser.parse_args()
 
     # If -p is used, size argument is optional, but if -p isn't used, size is required
-    if not args.post and not args.size:
-        parser.error("The '-s/--size' argument is required unless '-p' is used.")
+    if not args.post and not args.size and not args.compare:
+        parser.error("The '-s/--size' argument is required unless '-p' or '-c' is used.")
+
+    # If comparing algorithms, we do not require the -a argument
+    if args.compare and not args.algorithm:
+        args.algorithm = None
 
     # Generate the array based on the selected data type
     arr = generate_array(args.size, args.data) if args.size else []
@@ -216,7 +215,6 @@ def main():
     if args.post:
         info = post_algorithm_info(args.algorithm)
         print(info)
-
 
 
 if __name__ == "__main__":
