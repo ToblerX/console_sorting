@@ -3,7 +3,7 @@ from algorithm import Algo
 from tools import timeit
 
 
-class QuickSort(Algo):
+class HeapSort(Algo):
     def __init__(self, arr: List[int], count_time: bool) -> None:
         super().__init__(arr, count_time)
 
