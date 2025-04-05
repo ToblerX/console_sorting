@@ -25,9 +25,11 @@ Implemented Algorithms
 
 Project Structure
 -----------------
-sorting_cli/
+console_sorting/
 │
 ├── algorithms/
+│   ├── tools.py
+│   ├── algorithm.py
 │   ├── bubble_sort.py
 │   ├── selection_sort.py
 │   ├── merge_sort.py
@@ -39,19 +41,19 @@ sorting_cli/
 │   ├── bucket_sort.py
 │   └── heap_sort.py
 │
-├── main.py
+├── sorting_cli.py
 └── README.txt
 
 Getting Started
 ---------------
 1. Clone the Repository:
 
-    git clone https://github.com/your-username/sorting-cli.git
+    git clone https://github.com/ToblerX/sorting-cli.git
     cd sorting-cli
 
 2. Run the Script:
 
-    python main.py [OPTIONS]
+    python sorting_cli.py [OPTIONS]
 
 Options
 -------
@@ -67,15 +69,15 @@ Examples
 --------
 Run a specific algorithm:
 
-    python main.py -a QuickSort -s 1000 -d random
+    python sorting_cli.py -a QuickSort -s 1000 -d random
 
 Compare two algorithms:
 
-    python main.py -c QuickSort MergeSort -s 1000 -d random
+    python sorting_cli.py -c QuickSort MergeSort -s 1000 -d random
 
 Show theoretical information:
 
-    python main.py -a HeapSort -p
+    python sorting_cli.py -a HeapSort -p
 
 Requirements
 ------------
