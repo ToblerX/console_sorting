@@ -1,16 +1,14 @@
 from algorithm import Algo
 from typing import List, Tuple, Union
+from tools import timeit
 import time
 
-
 class BubbleSort(Algo):
-    def __init__(self, arr, count_time):
+    def __init__(self, arr: List[int], count_time: bool) -> None:
         super().__init__(arr, count_time)
 
-    def run(self, arr: list, count_time: bool) -> Union[List[int], Tuple[List[int], float]]:
-        if count_time:
-            start = time.time()
-
+    @timeit
+    def run(self, arr: List[int], count_time: bool) -> List[int]:
         n = len(arr)
         for i in range(n):
             swapped = False
@@ -20,8 +18,4 @@ class BubbleSort(Algo):
                     swapped = True
             if not swapped:
                 break
-
-        if count_time:
-            end = time.time()
-            return arr, end - start
         return arr
