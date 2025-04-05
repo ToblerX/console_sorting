@@ -9,6 +9,8 @@ from algorithms.tim_sort import TimSort
 from algorithms.radix_sort import RadixSort
 from algorithms.counting_sort import CountingSort
 from algorithms.bucket_sort import BucketSort
+from algorithms.heap_sort import HeapSort
+
 
 
 def get_sorting_time(arr, algorithm_name):
@@ -31,9 +33,12 @@ def get_sorting_time(arr, algorithm_name):
         sorter = CountingSort(arr, count_time=True)
     elif algorithm_name == "BucketSort":
         sorter = BucketSort(arr, count_time=True)
+    elif algorithm_name == "HeapSort":
+        sorter = HeapSort(arr, count_time=True)
 
     sorted_arr, time_taken = sorter.run(arr, count_time=True)
     return time_taken
+
 
 
 def compare_algorithms(arr, algo1, algo2):
@@ -151,9 +156,21 @@ BucketSort:
     Space Complexity: O(n)
     Stable: Yes
     In-place: No
+""",
+        "HeapSort": """
+HeapSort:
+    Description: HeapSort is a comparison-based sorting algorithm that uses a binary heap data structure.
+    Time Complexity:
+        Best: O(n log n)
+        Average: O(n log n)
+        Worst: O(n log n)
+    Space Complexity: O(1)
+    Stable: No
+    In-place: Yes
 """
     }
     return info.get(algorithm_name, "Unknown algorithm")
+
 
 
 def generate_array(size, array_type="reversed"):
