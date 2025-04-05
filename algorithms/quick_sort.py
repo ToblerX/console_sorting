@@ -1,5 +1,5 @@
 from typing import List
-from algorithm import Algo
+from algorithms.algorithm import Algo
 from tools import timeit
 
 class QuickSort(Algo):
