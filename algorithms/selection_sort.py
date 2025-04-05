@@ -1,5 +1,5 @@
 from algorithm import Algo
-from typing import List, Tuple, Union
+from typing import List
 from tools import timeit
 
 class SelectionSort(Algo):
