@@ -1,6 +1,6 @@
 from typing import List
 from algorithms.algorithm import Algo
-from tools import timeit
+from algorithms.tools import timeit
 
 class MergeSort(Algo):
     def __init__(self, arr: List[int], count_time: bool) -> None:
