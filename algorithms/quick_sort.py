@@ -1,3 +1,4 @@
+import random
 from typing import List
 from algorithms.algorithm import Algo
 from algorithms.tools import timeit
@@ -20,9 +21,11 @@ class QuickSort(Algo):
         """
         if len(arr) <= 1:
             return arr
+        if len(arr) < 10:  # For small arrays, use InsertionSort (or any other small-array optimization)
+            return self.insertion_sort(arr)
 
-        # Choosing the pivot (here, we use the first element)
-        pivot = arr[0]
+        # Choosing a random pivot
+        pivot = random.choice(arr)
 
         # Dividing the array into three subarrays: left, mid, and right
         left = [x for x in arr if x < pivot]
@@ -31,3 +34,16 @@ class QuickSort(Algo):
 
         # Recursively sorting and combining the subarrays
         return self.quick_sort(left) + mid + self.quick_sort(right)
+
+    def insertion_sort(self, arr: List[int]) -> List[int]:
+        """
+        Sorts the list using Insertion Sort for small subarrays.
+        """
+        for i in range(1, len(arr)):
+            key = arr[i]
+            j = i - 1
+            while j >= 0 and key < arr[j]:
+                arr[j + 1] = arr[j]
+                j -= 1
+            arr[j + 1] = key
+        return arr
