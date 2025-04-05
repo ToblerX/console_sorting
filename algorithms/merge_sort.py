@@ -1,4 +1,4 @@
-from typing import List, Tuple
+from typing import List
 from algorithm import Algo
 from tools import timeit
 
