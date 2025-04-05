@@ -185,8 +185,8 @@ def main():
     # Generate the array based on the selected data type
     arr = generate_array(args.size, args.data) if args.size else []
 
-    # Get sorting time for the selected algorithm
-    if args.algorithm and not args.post:
+    # Get sorting time for the selected algorithm, but don't print it here if comparing
+    if args.algorithm and not args.compare and not args.post:
         time_taken = get_sorting_time(arr, args.algorithm)
         print(f"Time taken by {args.algorithm}: {time_taken:.6f} seconds")
         print("-" * 50)
@@ -199,6 +199,7 @@ def main():
     if args.post:
         info = post_algorithm_info(args.algorithm)
         print(info)
+
 
 
 if __name__ == "__main__":
